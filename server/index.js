@@ -18,13 +18,20 @@ app.use(cors());
 app.use('/posts', postRoutes);
 
 app.get('/', (req, res) => {
-    res.send('Hello to Memories API');
+    res.send('Hello to Memories API'); //THIS IS ONLY GREETING NOTE NOTHING IMPORTANT SO THAT IT SHOWS SOMETHING BEFORE/posts 
 });
 
 const PORT = process.env.PORT || 5000; //define PORT in env if app not working as after uploading on herkoku, it automatically adds PORT
 
-mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/memories-local', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then(() => app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`)))
     .catch((error) => console.log(error.message));
 
 mongoose.set('useFindAndModify', false);
+
+mongoose.connection.on('connected', () => {
+    console.log('Mongoose is connected!!!!');
+});
