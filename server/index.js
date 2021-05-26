@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
     res.send('Hello to Memories API'); //THIS IS ONLY GREETING NOTE NOTHING IMPORTANT SO THAT IT SHOWS SOMETHING BEFORE/posts 
 });
 
-const PORT = process.env.PORT || 5000; //define PORT in env if app not working as after uploading on herkoku, it automatically adds PORT
+const PORT = process.env.PORT || 5000; //define PORT in env if app not working as after uploading on heroku, it automatically adds PORT
 
 mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/memories-local', {
     useNewUrlParser: true,
