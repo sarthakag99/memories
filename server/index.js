@@ -28,7 +28,7 @@ mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/memories-local',
     useUnifiedTopology: true
 })
     .then(() => app.listen(PORT, () => console.log(`Server running on PORT: ${PORT}`)))
-    .catch((error) => console.log(error.message));
+    .catch((error) => console.log(error));
 
 mongoose.set('useFindAndModify', false);
 
