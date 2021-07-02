@@ -4,17 +4,20 @@ import { useSelector } from "react-redux";
 import Post from './Post/Post.js';
 import useStyles from './styles';
 
-const Posts = ({setCurrentId}) => {
-    const posts = useSelector((state) => state.posts); //this state.posts is from index.js of reducers from ending (posts:posts) part 
+const Posts = ({ setCurrentId }) => {
+    const { posts, isLoading } = useSelector((state) => state.posts); //this state.posts is from index.js of reducers from ending (posts:posts) part 
     const classes = useStyles();
+
+    if (!posts.length && !isLoading) return 'No Posts';
+
     console.log(posts);
     return (
-        !posts.length ? <CircularProgress /> : (
+        isLoading ? <CircularProgress /> : (
             <Grid className={classes.container} container alignItems="stretch" spacing={3}>
                 {
                     posts.map((post) => (
-                        <Grid key={posts._id} item xs={12} sm={6}>
-                            <Post post={post} setCurrentId={setCurrentId}/>
+                        <Grid key={posts._id} item xs={12} sm={12} md={6} lg={3}>
+                            <Post post={post} setCurrentId={setCurrentId} />
                         </Grid>
                     ))
                 }
@@ -22,5 +25,5 @@ const Posts = ({setCurrentId}) => {
         )
     );
 
-}
+};
 export default Posts;
