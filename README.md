@@ -12,7 +12,7 @@ Express and Node as Backend
 
 MongoDB as Database 
 
-Have a look at  [https://btp-college.herokuapp.com/](https://btp-college.herokuapp.com/)
+Have a look at  [https://memories-mern2.netlify.app/](https://memories-mern2.netlify.app/)
 
 ### Install dependencies
 
